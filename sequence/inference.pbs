@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=03:00:00
+#PBS -l pmem=5gb
+#PBS -A default_project
+
+module purge
+echo $CONDA_PREFIX
+source /data/leuven/333/vsc33399/jupyter/bin/activate
+conda activate deepethogram
+
+python -m deepethogram.sequence.train \
+    project.path=$PROJECT_PATH
+python -m deepethogram.sequence.inference \
+    project.path=${PROJECT_PATH} \
+    inference.overwrite=True \
+    sequence.weights=latest \
+    inference.directory_list=[${VIDEO_FOLDER}]

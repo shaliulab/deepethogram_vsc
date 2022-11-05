@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#PBS -l nodes=1:ppn=9:gpus=1:skylake
+#PBS -l partition=gpu
+#PBS -l walltime=03:00:00
+#PBS -l pmem=5gb
+#PBS -A default_project
+
+
+
+module purge
+echo $CONDA_PREFIX
+source /data/leuven/333/vsc33399/jupyter/bin/activate
+conda activate deepethogram
+
+python -m deepethogram.feature_extractor.train \
+    project.path=$PROJECT_PATH \
+    flow_generator.weights=latest \
+    train.num_epochs=20 \
+    compute.num_workers=9
