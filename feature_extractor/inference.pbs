@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-#PBS -l nodes=1:ppn=4
+#PBS -l nodes=1:ppn=9:gpus=1:skylake
+#PBS -l partition=gpu
 #PBS -l walltime=03:00:00
 #PBS -l pmem=5gb
-#PBS -A default_project
+#PBS -A lp_socialsleep 
+
 
 module purge
 echo $CONDA_PREFIX
@@ -12,8 +14,9 @@ conda activate deepethogram
 
 python -m deepethogram.feature_extractor.inference \
     project.path=$PROJECT_PATH \
-    inference.overwrite=True feature_extractor.weights=latest
+    feature_extractor.weights=latest \
     flow_generator.weights=latest \
+    inference.overwrite=True \
+    inference.ignore_error=False \
     train.num_epochs=10 \
     compute.num_workers=4 \
-    inference.directory_list=[${VIDEO_FOLDER}]

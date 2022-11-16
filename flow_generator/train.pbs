@@ -4,7 +4,7 @@
 #PBS -l partition=gpu
 #PBS -l walltime=03:00:00
 #PBS -l pmem=5gb
-#PBS -A default_project
+#PBS -A lp_socialsleep 
 
 module purge
 echo $CONDA_PREFIX
