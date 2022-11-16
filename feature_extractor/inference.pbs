@@ -19,4 +19,4 @@ python -m deepethogram.feature_extractor.inference \
     inference.overwrite=True \
     inference.ignore_error=False \
     train.num_epochs=10 \
-    compute.num_workers=4 \
+    compute.num_workers=4 

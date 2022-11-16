@@ -11,7 +11,7 @@ echo $CONDA_PREFIX
 source /data/leuven/333/vsc33399/jupyter/bin/activate
 conda activate deepethogram
 
-/data/leuven/333/vsc33399/jupyter/envs/deepethogram/bin/python -m deepethogram.flow_generator.train \
+python -m deepethogram.flow_generator.train \
     project.path=/data/leuven/333/vsc33399/flyhostel_data/flyhostel_deepethogram \
     train.num_epochs=10 \
     compute.num_workers=9
