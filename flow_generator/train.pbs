@@ -12,6 +12,6 @@ source /data/leuven/333/vsc33399/jupyter/bin/activate
 conda activate deepethogram
 
 python -m deepethogram.flow_generator.train \
-    project.path=/data/leuven/333/vsc33399/flyhostel_data/flyhostel_deepethogram \
+    project.path=$PROJECT_PATH \
     train.num_epochs=10 \
     compute.num_workers=9
